@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Transaction::factory(50)->fastFood()->create();
+        Transaction::factory(150)->fastFood()->create();
         Transaction::factory(12)->wages()->create();
-        Transaction::factory(4)->utilities()->create();
-        Transaction::factory(50)->groceries()->create();
-        Transaction::factory(50)->petrol()->create();
+        Transaction::factory(2)->utilities()->create();
+        Transaction::factory(10)->groceries()->create();
+        Transaction::factory(10)->petrol()->create();
 
         User::factory()->create([
             'name' => 'Test User',

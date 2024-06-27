@@ -16,12 +16,6 @@ Route::get('/', function () {
 
 (new RouteBuilder('nav-main'))->create();
 
-
-/*
-|--------------------------------------------------------------------------
-| Admin Routes
-|--------------------------------------------------------------------------
-|
-*/
-
-// (new RouteBuilder('nav-admin'))->create();
+// $path = base_path('database/retailers.json');
+// $jsonFile = json_decode(file_get_contents($path));
+// dd($jsonFile);

@@ -11,6 +11,6 @@ class Transaction extends Model
 
     protected $casts = [
         'amount' => \Naykel\Gotime\Casts\MoneyCast::class,
-        'created_at' => \Naykel\Gotime\Casts\DateCast::class,
+        // 'created_at' => \Naykel\Gotime\Casts\DateCast::class,
     ];
 }

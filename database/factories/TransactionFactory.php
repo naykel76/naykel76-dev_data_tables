@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TransactionFactory extends Factory
 {
-
-    // 'description' => $this->faker->randomElement(['Salary', 'Rent', 'Electricity', 'Water', 'Internet', 'Phone', 'Groceries', 'Fuel', 'Insurance', 'Medical', 'Entertainment', 'Clothing', 'Transport', 'Education', 'Fast Food', 'Other']),
-
     protected $fastFood = [
-        'vendor' => ['McDonalds', 'KFC', 'Pizza Hut'],
-        'lowPrice' => 5,
-        'highPrice' => 30
+        'vendor' => ['KFC', 'McDonalds', 'Hungry Jacks'],
+        'low' => 6,
+        'high' => 30
     ];
 
     protected $superMarkets = [
@@ -40,7 +37,7 @@ class TransactionFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'description' => $this->faker->randomElement($this->fastFood['vendor']),
-                'amount' => $this->faker->randomFloat(2, $this->fastFood['lowPrice'], $this->fastFood['highPrice']) * -1,
+                'amount' => $this->faker->randomFloat(2, $this->fastFood['low'], $this->fastFood['high']) * -1,
             ];
         });
     }
@@ -62,7 +59,6 @@ class TransactionFactory extends Factory
         });
     }
 
-    // quarterly sequence
     public function utilities(): Factory
     {
         return $this->sequence(function ($sequence) {

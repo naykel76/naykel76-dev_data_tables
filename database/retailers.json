@@ -1,0 +1,47 @@
+{
+    "income": {
+        "priceLow": 1000,
+        "priceHigh": 2000,
+        "frequency": "monthly"
+    },
+    "categories": {
+        "fastfood": {
+            "priceLow": 5,
+            "priceHigh": 30,
+            "frequency": 4
+        },
+        "electricity": {
+            "priceLow": 480,
+            "priceHigh": 520,
+            "frequency": "quarterly"
+        },
+        "water": {
+            "priceLow": 240,
+            "priceHigh": 290,
+            "frequency": "quarterly"
+        },
+        "rates": {
+            "priceLow": 400,
+            "priceHigh": 410,
+            "frequency": "quarterly"
+        }
+    },
+    "vendors": {
+        "fastfood": [
+            "McDonalds",
+            "Pizza Hut",
+            "KFC",
+            "Burger King",
+            "Subway",
+            "Domino's Pizza",
+            "Starbucks"
+        ],
+        "clothing": [],
+        "electronics": [],
+        "homeImprovement": [],
+        "pharmacy": [],
+        "petSupplies": [],
+        "utilities": [],
+        "other": []
+    }
+}
