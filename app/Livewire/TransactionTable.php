@@ -17,11 +17,22 @@ class TransactionTable extends Component
     public string $view = 'livewire.transaction-table';
 
     public array $searchableFields = ['code', 'title',];
+    public string $filterBy = '';
+
+    /**
+     * Holds the chart data as a public property
+     */
+    public array $dataset = [];
+
+    public array $categories = [];
 
     public function mount()
     {
         $this->sortColumn = 'created_at';
         $this->sortDirection = 'desc';
+
+        $this->categories = $this->modelClass::select('category')
+            ->distinct()->pluck('category')->toArray();
     }
 
     protected function prepareData()
@@ -29,7 +40,34 @@ class TransactionTable extends Component
         $query = $this->modelClass::query();
         $query = $this->applySorting($query);
         $query = $this->applySearch($query);
+        $query = $this->applyFilter($query);
+
+        // this will run the query twice, once for the table and once for the chart
+        $this->dataset = $this->setChartData($query->get());
+
         return ['items' => $query->paginate(48)];
+    }
+
+    public function setChartData($data)
+    {
+        $totalsByCategory = $data->groupBy('description')
+            ->map(fn ($items) => $items->sum('amount'));
+
+        return [
+            'labels' => $totalsByCategory->keys()->all(),
+            'values' => $totalsByCategory->values()->all(),
+        ];
+    }
+
+    public function applyFilter($query)
+    {
+        if (empty($this->filterBy)) return $query;
+
+        return $this->modelClass::query()
+            ->when(
+                $this->filterBy === $this->filterBy,
+                fn ($query) => $query->whereCategory($this->filterBy)
+            );
     }
 
     public function render()

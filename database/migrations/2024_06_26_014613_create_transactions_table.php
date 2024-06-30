@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('description')->nullable();
+            $table->string('category')->nullable();
             $table->integer('amount')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

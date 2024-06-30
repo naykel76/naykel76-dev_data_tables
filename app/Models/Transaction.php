@@ -13,4 +13,14 @@ class Transaction extends Model
         'amount' => \Naykel\Gotime\Casts\MoneyCast::class,
         // 'created_at' => \Naykel\Gotime\Casts\DateCast::class,
     ];
+
+    public function dateForHumans()
+    {
+        return $this->created_at->format('d-m-Y');
+    }
+
+    public function scopeFilterBy ($query, $felid = 'description', $filterBy)
+    {
+        return $query->where($felid, $filterBy);
+    }
 }

@@ -25,10 +25,11 @@ class TransactionFactory extends Factory
         'high' => 120
     ];
 
+
     public function definition(): array
     {
         return [
-            'created_at' => Carbon::today()->subDays(rand(365, 0)),
+            'created_at' => Carbon::today()->subDays(rand(180, 0)),
         ];
     }
 
@@ -37,7 +38,8 @@ class TransactionFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'description' => $this->faker->randomElement($this->fastFood['vendor']),
-                'amount' => $this->faker->randomFloat(2, $this->fastFood['low'], $this->fastFood['high']) * -1,
+                'category' => 'Takeaway',
+                'amount' => $this->faker->randomFloat(2, $this->fastFood['low'], $this->fastFood['high']) * 1,
             ];
         });
     }
@@ -53,40 +55,64 @@ class TransactionFactory extends Factory
         return $this->sequence(function ($sequence) {
             return [
                 'description' => 'Monthly Wage',
+                'category' => 'Income',
                 'amount' => $this->faker->randomFloat(2, 3000, 3400),
                 'created_at' => Carbon::today()->subMonths($sequence->index),
             ];
         });
     }
 
-    public function utilities(): Factory
+    public function rates(): Factory
     {
         return $this->sequence(function ($sequence) {
             return [
                 'description' => 'Brisbane City Council Rates',
-                'amount' => $this->faker->randomFloat(2, 500, 580) * -1,
+                'category' => 'Utilities',
+                'amount' => $this->faker->randomFloat(2, 450, 480) * 1,
                 'created_at' => Carbon::today()->subMonths($sequence->index * 3),
             ];
         });
     }
-
+    public function power(): Factory
+    {
+        return $this->sequence(function ($sequence) {
+            return [
+                'description' => 'Energex Electricity Bill',
+                'category' => 'Utilities',
+                'amount' => $this->faker->randomFloat(2, 500, 580) * 1,
+                'created_at' => Carbon::now()->subWeeks(6)->subMonths($sequence->index * 3),
+            ];
+        });
+    }
+    public function water(): Factory
+    {
+        return $this->sequence(function ($sequence) {
+            return [
+                'description' => 'Urban Utilities Water Bill',
+                'category' => 'Utilities',
+                'amount' => $this->faker->randomFloat(2, 270, 300) * 1,
+                'created_at' => Carbon::now()->subWeeks(6)->subMonths($sequence->index * 3),
+            ];
+        });
+    }
     public function groceries(): Factory
     {
         return $this->sequence(function ($sequence) {
             return [
                 'description' => $this->faker->randomElement($this->superMarkets['vendor']),
-                'amount' => $this->faker->randomFloat(2, $this->superMarkets['low'], $this->superMarkets['high']) * -1,
+                'category' => 'Groceries',
+                'amount' => $this->faker->randomFloat(2, $this->superMarkets['low'], $this->superMarkets['high']) * 1,
                 'created_at' => Carbon::today()->subWeeks($sequence->index),
             ];
         });
     }
-
     public function petrol(): Factory
     {
         return $this->sequence(function ($sequence) {
             return [
                 'description' => $this->faker->randomElement($this->petrol['vendor']),
-                'amount' => $this->faker->randomFloat(2, $this->petrol['low'], $this->petrol['high']) * -1,
+                'category' => 'Petrol',
+                'amount' => $this->faker->randomFloat(2, $this->petrol['low'], $this->petrol['high']) * 1,
                 'created_at' => Carbon::today()->subWeeks($sequence->index),
             ];
         });

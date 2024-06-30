@@ -8,8 +8,18 @@
         "fastfood": {
             "priceLow": 5,
             "priceHigh": 30,
-            "frequency": 4
-        },
+            "frequency": 4,
+            "vendors": [
+                "McDonalds",
+                "Pizza Hut",
+                "KFC",
+                "Subway",
+                "Sushi Train"
+            ]
+        }
+    },
+    "vendors": {
+        "__COMMENT": "Add speciic vendor data here",
         "electricity": {
             "priceLow": 480,
             "priceHigh": 520,
@@ -25,23 +35,5 @@
             "priceHigh": 410,
             "frequency": "quarterly"
         }
-    },
-    "vendors": {
-        "fastfood": [
-            "McDonalds",
-            "Pizza Hut",
-            "KFC",
-            "Burger King",
-            "Subway",
-            "Domino's Pizza",
-            "Starbucks"
-        ],
-        "clothing": [],
-        "electronics": [],
-        "homeImprovement": [],
-        "pharmacy": [],
-        "petSupplies": [],
-        "utilities": [],
-        "other": []
     }
 }

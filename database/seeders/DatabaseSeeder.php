@@ -14,9 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Transaction::factory(150)->fastFood()->create();
-        Transaction::factory(12)->wages()->create();
-        Transaction::factory(2)->utilities()->create();
+        Transaction::factory(30)->fastFood()->create();
+        // Transaction::factory(6)->wages()->create();
+        Transaction::factory(2)->rates()->create();
+        Transaction::factory(2)->power()->create();
+        Transaction::factory(2)->water()->create();
         Transaction::factory(10)->groceries()->create();
         Transaction::factory(10)->petrol()->create();
 

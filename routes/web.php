@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Naykel\Gotime\RouteBuilder;
 
 /*
@@ -15,7 +16,3 @@ Route::get('/', function () {
 })->name('home');
 
 (new RouteBuilder('nav-main'))->create();
-
-// $path = base_path('database/retailers.json');
-// $jsonFile = json_decode(file_get_contents($path));
-// dd($jsonFile);
