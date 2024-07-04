@@ -53,9 +53,13 @@ class TransactionTable extends Component
         $totalsByCategory = $data->groupBy('description')
             ->map(fn ($items) => $items->sum('amount'));
 
+
+        $compare = $totalsByCategory->map(fn ($value) => $value * (rand(60, 140) / 100.0));
+
         return [
             'labels' => $totalsByCategory->keys()->all(),
             'values' => $totalsByCategory->values()->all(),
+            'compare' => $compare->values()->all(),
         ];
     }
 

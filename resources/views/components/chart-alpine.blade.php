@@ -44,7 +44,7 @@
                     let el = this.$wire.$el.querySelector('canvas')
 
                     // destructure the dataset into labels and values
-                    let { labels, values } = dataset;
+                    let { labels, values, compare } = dataset;
 
                     return new Chart(el, {
                         type: 'line',
@@ -59,7 +59,14 @@
                                     borderColor: 'rgba(75, 192, 192, 1)',
                                     borderWidth: 1
                                 },
-                                // additional datasets can be added here
+                                {
+                                    tension: 0.1,
+                                    label: 'Transaction Summary',
+                                    data: compare,
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderColor: 'rgba(75, 0, 192, 1)',
+                                    borderWidth: 1
+                                }
                             ]
                         },
                         options: {
